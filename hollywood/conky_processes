@@ -1,0 +1,43 @@
+conky.config = {
+    update_interval=1,
+    background=false,
+    text_buffer_size=2048,
+    double_buffer=true,
+    no_buffers=true,
+    use_xft=true,
+    font='hack:pixelsize=11',
+    draw_shades=false,
+    override_utf8_locale=true,
+    own_window=true,
+    own_window_type='normal',
+    own_window_transparent=true,
+    own_window_argb_visual=true,
+    own_window_argb_value=100,
+    own_window_hints='undecorated,below,sticky,skip_taskbar,skip_pager',
+    own_window_colour='000000',
+
+	alignment = 'top_left',
+	gap_x = 393,
+	gap_y = 740,
+	cpu_avg_samples = 2,
+	net_avg_samples = 2,
+	minimum_width = 600, minimum_height = 210,
+	maximum_width = 600,
+	color0 = '#494a5b',
+	default_color = '#a5adff',
+	color1 = '#494a5b',
+};
+
+conky.text = [[
+#leet chars: ┤┤└└┴┴┐┐││┘┘┌┌├├┬┬┼┼┴┴── ││ ▽▼△▲▵▴▾▿ ❱❱❰❰
+${goto 130}${font Monospace:pixelsize=15}CPU${font}${goto 292}│${goto 430}${color0}${font Monospace:pixelsize=15}RAM${font}${color}                   
+
+                                        ╶┼╴                                      
+${execpi 5 top -b -n 1 -o %CPU | head -n 17  | tail -n 8 | awk '{print $11, $7}' | column -t -o "      " | sed 's/^/         /'}
+${voffset -113}${color0}${execpi 5 top -b -n 1 -o %MEM | head -n 17  | tail -n 8 | awk '{print $11, $8}' | column -t -o "      " | sed 's/^/${goto 370}/'}${color #e5e6e8}
+
+
+${goto 70}${color1}${exec grep [0-9] /proc/loadavg | awk '{print $1}'}    ${exec grep [0-9] /proc/loadavg | awk '{print $2}'}    ${exec grep [0-9] /proc/loadavg | awk '{print $3}'}
+${voffset -13}${goto 360}$mem / $memmax - ${fs_used_perc /tmp}% tmp${color}
+${image /home/michael/.conky/ultiConky/processes.png -p 0,30 -n}
+]];
