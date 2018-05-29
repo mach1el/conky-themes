@@ -1,0 +1,37 @@
+background yes
+imlib_cache_size 0
+use_xft yes
+xftfont Droid Sans:size=9
+xftalpha 0.9
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+#stippled_borders 8
+border_margin 5
+#border_width 1
+default_color fff
+color1 FFA300
+#alignment top_left
+#alignment top_right
+alignment bottom_left
+#alignment bottom_right
+#alignment none
+gap_x 5
+gap_y 25
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale yes
+mpd_port 6600
+
+TEXT
+${if_mpd_playing}${font size=11:bold}${color1}${mpd_artist}${font}${color} - ${mpd_title}
+${mpd_bar 5,170}${endif}
