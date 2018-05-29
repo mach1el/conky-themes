@@ -1,0 +1,36 @@
+conky.config = {
+    update_interval=1,
+    background=false,
+    text_buffer_size=2048,
+    double_buffer=true,
+    no_buffers=true,
+    use_xft=true,
+    font='hack:pixelsize=11',
+    draw_shades=false,
+    override_utf8_locale=true,
+    own_window=true,
+    own_window_type='normal',
+    own_window_transparent=true,
+    own_window_argb_visual=true,
+    own_window_argb_value=100,
+    own_window_hints='undecorated,below,sticky,skip_taskbar,skip_pager',
+    own_window_colour='000000',
+    draw_graph_borders=false,
+
+	default_color = '#494a5b',
+	default_shade_color = 'black',
+	alignment = 'middle_middle',
+	gap_x = 0,
+	gap_y = 30,
+	minimum_width = 320, minimum_height = 270,
+	maximum_width = 320,
+	color1 = '#a5adff',
+	color2 = '#b4b4b4',
+	color3 = '#494a5b',
+	imlib_cache_size = 0,
+	lua_load = "/home/michael/.conky/ultiConky/r.lua",
+	lua_draw_hook_pre = "conky_main",
+};
+conky.text = [[
+${image /home/michael/.conky/ultiConky/aarch.png -s 80x80 -p 115,100 -n}
+]]
