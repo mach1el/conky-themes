@@ -1,0 +1,34 @@
+conky.config = {
+    own_window = true,
+    own_window_type = 'override',
+    own_window_colour = '#2a313b',
+    own_window_transparent = false,
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+    double_buffer = true,
+    use_spacer = 'none',
+    background = yes,
+    use_xft = true,
+    font = 'silkscreen:size=7',
+    xftalpha = 1,
+	text_buffer_size = 2048,
+	alignment = 'top_left',
+	gap_x = 0,
+	gap_y = 3,
+	update_interval = 1.0,
+	stippled_borders = 0,
+	minimum_width = 1366, minimum_height = 3,
+	maximum_width = 1366,
+	border_inner_margin = 3,
+	border_outer_margin = 0,
+	border_width = 0,
+	default_color = '#2a313b',
+	draw_outline = false,
+	draw_borders = false,
+	short_units = true,
+	uppercase = false,
+	draw_shades = false,
+};	
+conky.text = [[
+    ${font}${color a6e22e}Machine ${color d3d3d3}$user_names@$nodename | ${color ff669d}Kernel${color d3d3d3} $kernel | ${color fd971f} Uptime ${color d3d3d3}$uptime${color d3d3d3} | ${color 9e6ffe}Cpu1:${color d3d3d3}${cpu cpu1}% ${cpubar cpu1 4, 32} | ${color #ffd219
+}Cpu2:${color WHITE}${cpu cpu2}%${cpubar cpu2 4,32} | ${color 00CBEE}Ram ${color d3d3d3}${memperc}% ${membar 4, 32} | ${color ae7ebd}Root ${color e0e0e0}${font}${color2}${fs_bar 4,32 /root} ${fs_free_perc /root} %${color1} | ${color 8d8e7e}Home ${color e0e0e0}${font}${fs_used /home}/${fs_size /home} | ${color #ff009c}${font}TEMP:${color WHITE}${execi 60 hddtemp /dev/sda | cut -c 30-32}ºC | ${color ORANGE}ESSID:${color WHITE}${wireless_essid wlp2s0} ${color #ff19de}Signal:${color WHITE}${wireless_link_qual_perc wlp2s0}% | ${color #06e4ea}${font}IP: ${color WHITE}${addr wlp2s0} ${color #06e4ea}${font}Up:${color WHITE}${upspeedgraph wlp2s0  4,32 000000}${color #63ff00}${color #06e4ea} ${font}Down:${color WHITE}${downspeedgraph wlp2s0 4,32 0000} | ${color #2fff00}Package to Upgrade:${color WHITE}${execi 1200 pacman -Qu | wc -l} | ${color #ff4000}Gmail:${color WHITE}${execi 300 wget -q -O - --auth-no-challenge --user=atemhacking@gmail.com --password=whiteh@th@cker 'https://mail.google.com/mail/feed/atom' | awk 'gsub(/<\/?fullcount>/, "")}
+]];
