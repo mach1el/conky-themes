@@ -1,0 +1,108 @@
+# Conky settings #
+background no
+update_interval 1
+
+cpu_avg_samples 2
+net_avg_samples 2
+
+override_utf8_locale yes
+
+double_buffer yes
+no_buffers yes
+
+text_buffer_size 2048
+#imlib_cache_size 0
+
+temperature_unit celsius
+
+# Window specifications #
+own_window_class Conky
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
+
+border_inner_margin 0
+border_outer_margin 0
+
+minimum_size 500 450
+maximum_width 520
+
+alignment top_right
+gap_x 0
+gap_y 20
+
+# Graphics settings #
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+
+default_color gray
+default_shade_color WHITE
+default_outline_color green
+
+# Text settings #
+use_xft yes
+override_utf8_locale yes
+xftfont Pf Righteous:bold:size=6
+xftalpha 0.9
+uppercase no
+
+temperature_unit celsius
+
+default_color 999999
+color0 CACACA
+color1 CACACA
+color2 CACACA
+#color3 1994D1 
+
+# Lua Load  ##${voffset 750}
+lua_load /home/michael/.conky/Red_Nsa/script/rings-v1.2.1.lua_dark
+lua_draw_hook_pre ring_stats
+lua_draw_hook_pre conky_main
+
+own_window_argb_value 0
+own_window_argb_visual no
+own_window_colour 000000
+TEXT
+${font Righteous:bold:size=8}${voffset 16}${goto 160}${color1}${hwmon 2 temp 1}°C
+${font Righteous:bold:size=8}${voffset -1}${goto 120}${color1}CPU 1 ${alignr 310}${color1}${cpu cpu0}%
+${font Righteous:bold:size=8}${voffset 4}${goto 120}${color1}CPU 2${alignr 310}${color1}${cpu cpu1}%
+${font Righteous:bold:size=8}${voffset 4}${goto 120}${color1}CPU 3${alignr 310}${color1}${cpu cpu2}%
+${font Righteous:bold:size=8}${voffset 2}${goto 120}${color1}CPU 4${alignr 310}${color1}${cpu cpu3}%
+${goto 50}${voffset 12}${font Righteous:size=8}${color1}${top name 1}${alignr 300}${top cpu 1}%
+${goto 50}${font Righteous:size=8}${color1}${top name 2}${alignr 300}${top cpu 2}%
+${goto 50}${font Righteous:size=8}${color1}${top name 3}${alignr 300}${top cpu 3}%
+${font Righteous:size=11}${color0}${goto 25}${voffset 8}CPU  ${freq_g cpu0} Ghz
+${font Righteous:size=12}${color0}${goto 350}${voffset 48}MEMORY
+${goto 340}${voffset -6}${font Righteous:size=8}${color1}${top_mem name 1}${alignr 20}${top_mem mem 1}%
+${goto 340}${font Righteous:size=8}${color1}${top_mem name 2}${alignr 20}${top_mem mem 2}%
+${goto 340}${font Righteous:size=8}${color1}${top_mem name 3}${alignr 20}${top_mem mem 3}%
+${font Righteous:size=8}${voffset 3}${goto 350}${color1}SWAP${alignr 1}${color1}${swap} / ${color1}${swapmax}
+${font Righteous:size=8}${voffset 4}${goto 350}${color1}RAM ${alignr 1}${color1}${mem} / ${color1}${memmax}
+${font Righteous:size=8}${goto 42}${voffset -68}Root${color1}${alignr 300}${fs_used /} / ${fs_size /}
+${font Righteous:size=8}${goto 42}${voffset 2}Home${alignr 300}${color1}${fs_used /home} / ${fs_size /home}
+${font Righteous:size=8}${goto 42}${voffset 1}Usr${alignr 300}${color1}${fs_used /usr} / ${fs_size /usr}
+${font Righteous:size=11}${color0}${goto 72}${voffset 12}HARD DRIVE 
+${font Righteous:size=11}${color0}${voffset 15}${goto 330}INTERNET INFO
+${image /home/michael/.conky/Red_Nsa/script/nsa.png -p 305,1 -s 155x160}
+# EDITION FINIR WLAN
+${if_existing /proc/net/route wlp3s0}${font Righteous:bold:size=8}${color1}${goto 300}${voffset -14}WiFi${goto 350}${color1}${wireless_essid wlp3s0}${font Righteous:bold:size=8}${color1}${goto 300}${voffset 12}Up${goto 350}${color1}${totalup wlp3s0} / ${color1}${upspeed wlp3s0}
+${font Righteous:bold:size=8}${goto 300}${color1}Down${goto 350}${color1}${totaldown wlp3s0} / ${color1}${downspeed wlp3s0}
+${font Righteous:bold:size=8}${goto 300}${voffset 2}Local IP   NOPE! U CAN'T SEE${goto 200}
+
+${font Righteous:size=11}${goto 114}${voffset -50}${color0}${time %a} ${color0}${time %x}
+${font righteous:size=14}${goto 150}${color1}${voffset 0}${time %H}:${time %M}
+${font Righteous:size=14}${color0}${goto 300}${voffset 22}BATTERY
+${font Rightoues:size=12}${color0}${goto 282}${voffset -2}${color1}${battery_percent BAT0}%
+# |--ETH0
+${else}${if_existing /proc/net/route enp2s0f2}${font Righteous:size=8}${color1}${goto 300}${voffset -6}Up${goto 350}${color1}${totalup wlp3s0} / ${color1}${upspeed wlp3s0}
+${font Righteous:size=8}${goto 300}${color1}Down${goto 350}${color1}${totaldown wlp3s0} / ${color1}${downspeed wlp3s0}
+${font Righteous:size=8}${goto 300}${voffset 2}Local IP   NOPE! U Can't See That${goto 200}
+${font Righteous:size=12}${goto 114}${voffset -50}${color0}${time %x} ${color0}${time %a}
+${font Righteous:size=12}${goto 150}${color1}${voffset 0}${time %H}:${time %M}
+${font Righteous:size=12}${color0}${goto 300}${voffset 26}BATTERY
+${font Righteous:size=12}${color0}${goto 282}${voffset -2}${color1}${battery_percent BAT0}%${endif}${endif}
+#${font Pf Tempesta Five:bold:size=6}${goto 180}Uptime${color1}${alignr 100}${uptime_short}
+${font Righteous:size=17}${color0}${voffset -10}${goto 50}${alignr 130}๖ۣۜTHE๖ۣۜPHANTOMS
