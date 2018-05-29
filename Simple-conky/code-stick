@@ -1,0 +1,55 @@
+# Conky settings #
+background no
+update_interval 5
+double_buffer yes
+no_buffers yes
+
+# Window specifications #
+own_window yes
+own_window_type normal
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_title 
+own_window_colour 000000
+own_window_argb_visual no
+own_window_argb_value 200
+
+minimum_size 370 320
+maximum_width 370
+
+# Alignment #
+alignment middle_left
+gap_x 10
+gap_y 0
+
+border_inner_margin 10
+border_outer_margin 0
+
+# Graphics settings #
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+
+# Text settings #
+use_xft yes
+xftalpha 0
+xftfont Ubuntu:bold:size=9
+
+override_utf8_locale yes
+
+imlib_cache_size 0
+
+# Color scheme #
+default_color 333333
+
+color1 0099CC
+color2 9933CC
+color3 669900
+color4 FF8800
+color5 CC0000
+color6 AAAAAA
+color7 DDDDDD
+
+own_window_transparent no
+TEXT
+${voffset 1}${font}${color GRAY}${execi 5 python2 $HOME/py/codestick.py}
