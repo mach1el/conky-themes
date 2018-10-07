@@ -1,3 +1,2 @@
 # Conkies
-
-Conkies collection
+Conky themes collection
